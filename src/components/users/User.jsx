@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api';
+import Loading from '../Loading';
 
 const User = () => {
     const [user, setUser] = useState([])
@@ -69,7 +70,7 @@ const User = () => {
         )
     }
 
-    if (!isLoaded || loading) return <div>Loading...</div>
+    if (!isLoaded || loading) return <Loading />
     return (
         <>
             <Map />
