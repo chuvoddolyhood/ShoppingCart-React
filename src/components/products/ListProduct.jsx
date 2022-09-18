@@ -40,7 +40,7 @@ const ListProduct = () => {
                                         return <FontAwesomeIcon key={index} icon={faStar} ></FontAwesomeIcon>
                                     })
                                 }
-                                <NavLink to="/products">View more</NavLink>
+                                <NavLink to={`/products/${pro.id}`} className="show-detail">Show</NavLink>
                             </div>
                         )
                     })}
