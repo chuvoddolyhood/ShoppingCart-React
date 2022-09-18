@@ -6,6 +6,8 @@ const ProductPage = () => {
     return (
         <>
             <Navbar />
+            <br />
+            <br />
             <ListProduct />
         </>
     )

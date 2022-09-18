@@ -5,6 +5,7 @@ import './product.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom'
+import Fade from 'react-reveal/Fade';
 
 const ListProduct = () => {
     const [api, setApi] = useState("https://fakestoreapi.com/products/")
@@ -24,25 +25,27 @@ const ListProduct = () => {
 
     const ShowProduct = () => {
         return (
-            <div className='all-container'>
-                {product.map((pro, index) => {
-                    return (
-                        <div key={index} className="product">
-                            <p>{pro.title}</p>
-                            <img src={pro.image} alt="" />
-                            <p>{pro.price} $</p>
-                            <p>{pro.rating.rate}</p>
-                            {
-                                [...Array((pro.rating.rate).toFixed())].map((_, index) => {
-                                    // console.log((pro.rating.rate).toFixed());
-                                    return <FontAwesomeIcon key={index} icon={faStar} ></FontAwesomeIcon>
-                                })
-                            }
-                            <NavLink to="/products">View more</NavLink>
-                        </div>
-                    )
-                })}
-            </div>
+            <Fade bottom cascade>
+                <div className='all-container'>
+                    {product.map((pro, index) => {
+                        return (
+                            <div key={index} className="product">
+                                <p>{pro.title}</p>
+                                <img src={pro.image} alt="" />
+                                <p>{pro.price} $</p>
+                                <p>{pro.rating.rate}</p>
+                                {
+                                    [...Array((pro.rating.rate).toFixed())].map((_, index) => {
+                                        // console.log((pro.rating.rate).toFixed());
+                                        return <FontAwesomeIcon key={index} icon={faStar} ></FontAwesomeIcon>
+                                    })
+                                }
+                                <NavLink to="/products">View more</NavLink>
+                            </div>
+                        )
+                    })}
+                </div>
+            </Fade>
         )
     }
 
