@@ -21,6 +21,8 @@ const Navbar = () => {
                 <NavLink to="/products">Product</NavLink>
                 <NavLink to="/users">User</NavLink>
                 <NavLink to="/contact">Contact</NavLink>
+                <NavLink to="/products/add">Add Product</NavLink>
+                <NavLink to="/users/add">User</NavLink>
                 <button className='nav-btn nav-close-btn' onClick={showNavbar}>
                     <FontAwesomeIcon icon={faClose} ></FontAwesomeIcon>
                 </button>
