@@ -4,7 +4,8 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import InputControl from './InputControl'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword, updateProfile } from '@firebase/auth'
-import { auth } from '../config/Config'
+import { auth, db } from '../config/Config'
+import { collection, addDoc, setDoc, doc } from 'firebase/firestore'
 
 const Signin = () => {
     const [value, setValue] = useState({
@@ -16,6 +17,16 @@ const Signin = () => {
     const [messError, setMessError] = useState('')
     const [submitDisabled, setSubmitDisabled] = useState(false)
     const navigate = useNavigate();
+
+    // Add firestore
+    const createUser = async (name, email, uid) => {
+        // await addDoc(collection(db, "users"), { uid: { name: name, email: email, uid: uid } }, { merge: true })
+        await setDoc(doc(db, "users", uid), {
+            name: name,
+            email: email,
+            uid: uid
+        });
+    }
 
     const submitHandle = () => {
         if (!value.name || !value.email || !value.password) {
@@ -32,6 +43,7 @@ const Signin = () => {
                 await updateProfile(user, {
                     displayName: value.name
                 })
+                createUser(user.displayName, user.email, user.uid)
                 navigate("/")
             })
             .catch((error) => {
