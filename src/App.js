@@ -4,6 +4,7 @@ import AddProduct from './components/admin/product/AddProduct';
 import AddUser from './components/admin/user/AddUser';
 import Login from './components/auth/Login';
 import Signin from './components/auth/Signin';
+import CartPage from './components/cart/CartPage';
 import Home from './components/home/Home';
 import DetailProduct from './components/products/DetailProduct';
 import ProductPage from './components/products/ProductPage';
@@ -21,6 +22,7 @@ function App() {
         <Route path='/users/add' element={<AddUser />} />
         <Route path='/signIn' element={<Signin />} />
         <Route path='/logIn' element={<Login />} />
+        <Route path='/cart' element={<CartPage />} />
       </Routes>
     </div>
   );

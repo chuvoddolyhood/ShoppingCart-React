@@ -1,0 +1,34 @@
+.heading-cart {
+    text-align: center;
+}
+
+.cart-container {
+    padding: 4rem 2rem;
+}
+
+.product-cart {
+    display: flex;
+    flex-direction: row;
+    background-color: #fbfbfb;
+    justify-content: space-around;
+    padding: 2rem 2rem;
+    margin: 2rem auto;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 10%);
+}
+
+.product-cart img {
+    width: 10%;
+    margin-right: 2rem;
+}
+
+.info-product {
+    display: flex;
+    /* width: 50vw; */
+}
+
+.noti-cart {
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 2rem;
+}

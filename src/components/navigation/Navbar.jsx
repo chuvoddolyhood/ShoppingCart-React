@@ -5,14 +5,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faClose, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import { useRef } from 'react';
 import { useEffect } from 'react';
-import { auth } from '../config/Config';
+import { auth, db } from '../config/Config';
 import { useState } from 'react';
 import { LogOut } from '../auth/Logout';
+import { collection, getDocs } from 'firebase/firestore';
 
 const Navbar = () => {
     const navRef = useRef();
     const [username, setUsername] = useState('')
     const [uid, setUid] = useState('')
+    const [numberOfProduct, setNumberOfProduct] = useState('')
+    const userCollectionRef = collection(db, "cart");
 
 
     useEffect(() => {
@@ -26,6 +29,14 @@ const Navbar = () => {
                 setUid('')
             }
         })
+    }, [])
+
+    useEffect(() => {
+        const getNumberOfProduct = async () => {
+            const data = await getDocs(userCollectionRef)
+            setNumberOfProduct(data.size);
+        }
+        getNumberOfProduct()
     }, [])
 
     const showNavbar = () => {
@@ -52,10 +63,13 @@ const Navbar = () => {
                 </button>
             </nav>
 
-            <div>
-                <button className='nav-btn-cart'>
-                    <FontAwesomeIcon icon={faCartPlus} ></FontAwesomeIcon>
-                </button>
+            <div className='cart-button-area'>
+                <NavLink to="/cart">
+                    <button className='nav-btn-cart'>
+                        <FontAwesomeIcon icon={faCartPlus} ></FontAwesomeIcon>
+                        <span class="icon-button__badge">{numberOfProduct}</span>
+                    </button>
+                </NavLink>
                 <button className='nav-btn' onClick={showNavbar}><FontAwesomeIcon icon={faBars} ></FontAwesomeIcon></button>
             </div>
         </header>
