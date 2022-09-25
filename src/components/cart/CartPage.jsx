@@ -22,12 +22,15 @@ const CartPage = () => {
         getCart()
     }, [])
 
-    const buyHandle = async () => {
-        await addDoc(collection(db, "cart"), { id: id, title: title, amount: amount, price: price, subtotal: price * amount, imageURL: image, uid: uid }).then(() => {
-            alert("Success!")
-        }).catch((error) => {
-            alert(error.message)
-        });
+    const buyHandle = () => {
+        product.map((prod) => {
+            addDoc(collection(db, "orders"), prod).then(() => {
+                // alert("Success!")
+            }).catch((error) => {
+                alert(error.message)
+            });
+        })
+        alert('Success!')
     }
 
     return (
@@ -50,7 +53,7 @@ const CartPage = () => {
                 })}
                 <div>
                     <h2>Subtotal: $ {subtotal.current}</h2>
-                    <button onClick={() => { buyHandle() }}>Buy</button>
+                    <button onClick={buyHandle}>Buy</button>
                 </div>
             </div>
 

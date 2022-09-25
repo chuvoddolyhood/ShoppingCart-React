@@ -38,3 +38,21 @@
     transform: scale(1.05);
     transition: all 0.5s ease-out;
 }
+
+.show-detail {
+    text-decoration: none;
+    background-color: #e2e2e2;
+    color: black;
+    font-weight: 500;
+    padding: 0.2rem 0;
+    width: 40%;
+    margin: 1rem auto;
+    border-radius: 20px;
+    box-shadow: 1px 2px 2px 2px #97979780;
+}
+
+.show-detail:hover {
+    transform: scale(1.05);
+    transition: all 0.5s ease-out;
+    background-color: #cccccc;
+}

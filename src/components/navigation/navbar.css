@@ -28,7 +28,7 @@ nav a:hover {
 }
 
 header .nav-btn {
-    padding: 5px;
+    /* padding: 5px; */
     cursor: pointer;
     background: transparent;
     border: none;
